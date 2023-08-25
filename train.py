@@ -25,6 +25,7 @@ from src.preprocess import preprocess_pipeline
 
 # 로그 들어갈 위치
 # 로그를 정해진 로그 경로에 logs.log로 저장하도록 설정
+logger = set_logger(os.path.join(LOG_FILEPATH, "logs.log"))
 
 sys.excepthook = handle_exception
 warnings.filterwarnings(action="ignore")
@@ -88,6 +89,7 @@ if __name__ == "__main__":
                     "RMSE_CV": score_cv.mean()  # RMSE_CV 라는 이름으로 score_cv.mean()을 저장
                 }
             )
+            logger.info(f"RMSE CV for RUN {i}:{score_cv.mean()}")
 
             # 로깅 정보 : 학습 loss
             for s in regr.train_score_:
