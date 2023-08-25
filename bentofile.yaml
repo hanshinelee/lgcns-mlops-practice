@@ -1,0 +1,5 @@
+service: "service.py:svc"
+include:
+  - "sevice.py"
+python:
+  requirements_txt: "./requirements.txt"
